@@ -1,3 +1,13 @@
-print: "hello"
+import speech_recognition as sr
 
-# Path: main.py
+listener = sr.Recognizer()
+try:
+    with sr.Microphone() as source:
+        print('Listening...')
+        voice = listener.listen(source)
+        command = listener.recognize_google(voice)
+        command = command.lower()
+        if 'mia' in command:
+         print(command)
+except:
+    pass
