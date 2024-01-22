@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
+import datetime
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -32,8 +33,11 @@ def run_mia():
     if 'play' in command:
         song = command.replace('play', '')
         talk('playing' + song)
-        print('playing' + song)
         pywhatkit.playonyt(song)
+    elif 'time' in command:
+        time = datetime.datetime.now().strftime('%I:%M %p')
+        time = command.replace('time', '')
+        talk('Current time is' + time)
 
 run_mia()
 
